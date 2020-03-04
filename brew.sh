@@ -12,6 +12,8 @@ brew install watch
 brew install nvm
 brew install httpie
 brew install python3
+brew install binwalk
+brew install jq
 
 brew install tldr
 brew install git
@@ -33,4 +35,4 @@ brew install helm
 # brew install https://github.com/Homebrew/homebrew-core/raw/560afd4e62f4b84113de9b27626325ded28abb87/Formula/kubernetes-helm.rb
 
 # VPN
-# brew install wireguard-go
+brew install wireguard-tools
