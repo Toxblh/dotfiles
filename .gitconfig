@@ -1,0 +1,66 @@
+[Alias]
+  st = status
+  ci = commit -am
+  br = branch
+  co = checkout
+  # Pull rebase origin master
+  prom = pull --rebase origin master
+  # Pull rebase origin branch
+  prob = "!sh -c '_CURRENT_BRANCH=$(git symbolic-ref —short HEAD) && echo —- pull rebase $_CURRENT_BRANCH —- && git pull —rebase origin $_CURRENT_BRANCH'"
+  # prom + push
+  pmp =  "!git prom && git push"
+  # prom + push short
+  pp = "!git prom && git push"
+  # prob + push
+  pbp = "!git prob && git push"
+  # push new branch to origin
+  pu = "!sh -c '_CURRENT_BRANCH=$(git symbolic-ref --short HEAD) && git push -u origin $_CURRENT_BRANCH'"
+  # merge with no fast-forward
+  mnf = merge --no-ff
+  # merge branch to master
+  mm = "!sh -c '_CURRENT_BRANCH=$(git symbolic-ref --short HEAD) && echo --- merge $_CURRENT_BRANCH to master --- && echo --- git pull --- && git pull && echo --- git co master --- && git co master && echo --- git pull --- && git pull && echo --- git merge $_CURRENT_BRANCH --- && git merge $_CURRENT_BRANCH'"
+  # delete all merged branches
+  dmb = "!git co master && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
+  # Git graph commits
+  gr = log --graph --abbrev-commit --decorate --date=relative --format=format:\"%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)\" --all
+  # Git graph only my commits
+  mygr = log --graph --abbrev-commit --decorate --date=format:'%Y-%m-%d %H:%M:%S' --format=format:\"%C(bold blue)%h%C(reset) - %C(bold green)(%ad)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)\" --all --author='Palgunov'
+  # Pretty history
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  # Create new branch
+  task = checkout -b
+  # Fast diff
+  dl = diff HEAD^ HEAD
+
+[credential]
+  helper = osxkeychain
+
+[core]
+  excludesfile = ~/.gitignore
+  pager = diff-so-fancy | less --tabs=4 -RFX
+
+[help]
+  autocorrect = -1
+
+[color]
+  ui = true
+
+[color "diff-highlight"]
+  oldNormal = red bold
+  oldHighlight = red bold 52
+  newNormal = green bold
+  newHighlight = green bold 22
+
+[color "diff"]
+  meta = yellow
+  frag = magenta bold
+  commit = yellow bold
+  old = red bold
+  new = green bold
+  whitespace = red reverse
+
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
