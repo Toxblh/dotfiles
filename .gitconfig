@@ -31,6 +31,8 @@
   task = checkout -b
   # Fast diff
   dl = diff HEAD^ HEAD
+  # Squash branch to 1 commit
+  sqbr = "!sh -c '_CURRENT_BRANCH=$(git symbolic-ref --short HEAD) && git reset $(git merge-base master $_CURRENT_BRANCH) && git add -A && git commit -m \"$0\"'"
 
 [credential]
   helper = osxkeychain
