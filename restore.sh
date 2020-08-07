@@ -1,2 +1,2 @@
 #!/bin/bash
-cp -R ./.config/ ~/.config/
+cp -R ./.config/* ~/.config/
