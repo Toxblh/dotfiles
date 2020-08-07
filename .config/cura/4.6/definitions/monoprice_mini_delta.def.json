@@ -1,0 +1,61 @@
+{
+    "id": "monoprice_mini_delta",
+    "version": 2,
+    "name": "Monoprice Mini Delta",
+    "inherits": "fdmprinter",
+    "metadata": {
+        "author": "Brian Kurtz",
+        "manufacturer": "Monoprice",
+        "category": "Other",
+        "platform": "monoprice_mini_delta_platform.stl",
+        "file_formats": "text/x-gcode",
+        "has_machine_quality": false,
+        "supports_usb_connection": true,
+        "visible": true
+    },
+
+    "overrides": {
+        "machine_name": { "default_value": "MP Mini Delta" },
+        "machine_width": { "default_value": 110 },
+        "machine_depth": { "default_value": 110 },
+        "machine_height": { "default_value": 120 },
+        "machine_heated_bed": { "default_value": true },
+        "machine_shape": { "default_value": "elliptic" },
+        "machine_center_is_zero": { "default_value": true },
+        "machine_nozzle_size": {
+            "default_value": 0.4,
+            "minimum_value": 0.15,
+            "maximum_value": 0.80
+        },
+        "layer_height": {
+            "default_value": 0.14, 
+            "minimum_value": 0.05
+        },
+        "layer_height_0": {
+            "default_value": 0.21,
+            "minimum_value": 0.07
+        },
+        "line_width": { "value": "round(machine_nozzle_size * 0.875, 2)" },
+        "material_diameter": { "default_value": 1.75 },
+        "material_print_temperature_layer_0": { "value": "material_print_temperature + 5" },
+        "material_bed_temperature_layer_0": { "value": "material_bed_temperature + 5" },
+        "machine_gcode_flavor": { "default_value": "RepRap (Marlin/Sprinter)" },
+        "machine_max_feedrate_x": { "default_value": 150 },
+        "machine_max_feedrate_y": { "default_value": 150 },
+        "machine_max_feedrate_z": { "default_value": 150 },
+        "machine_max_feedrate_e": { "default_value": 50 },
+        "machine_max_acceleration_x": { "default_value": 800 },
+        "machine_max_acceleration_y": { "default_value": 800 },
+        "machine_max_acceleration_z": { "default_value": 800 },
+        "machine_max_acceleration_e": { "default_value": 10000 },
+        "machine_acceleration": { "default_value": 3000 },
+        "machine_max_jerk_xy": { "default_value": 20 },
+        "machine_max_jerk_z": { "default_value": 20 },
+        "machine_max_jerk_e": { "default_value": 5},
+        "retraction_amount": { "default_value": 4 },
+        "retraction_speed": { "default_value": 50 },
+        "retraction_hop_enabled": { "default_value": false },
+        "retract_at_layer_change": { "default_value": true },
+        "coasting_enable": { "default_value": true }
+    }
+}

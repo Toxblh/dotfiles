@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Conky
+Exec=/home/toxblh/.config/conky/startup.sh
+Terminal=false
+StartupNotify=false
+Hidden=true
+

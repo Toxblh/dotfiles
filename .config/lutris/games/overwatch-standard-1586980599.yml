@@ -1,0 +1,22 @@
+game:
+  arch: win64
+  args: --exec="launch Pro"
+  exe: drive_c/Program Files (x86)/Battle.net/Battle.net.exe
+  prefix: /home/toxblh/Games/overwatch
+system:
+  env:
+    DXVK_CONFIG_FILE: /home/toxblh/Games/overwatch/dxvk.conf
+    DXVK_STATE_CACHE_PATH: /home/toxblh/Games/overwatch
+    STAGING_SHARED_MEMORY: '1'
+    __GL_SHADER_DISK_CACHE: '1'
+    __GL_SHADER_DISK_CACHE_PATH: /home/toxblh/Games/overwatch
+  exclude_processes: Agent.exe "Battle.net Helper.exe"
+  manual_command: /home/toxblh/Games/overwatch/state-cache-merge/state-cache-update.sh
+wine:
+  dxvk: true
+  esync: true
+  overrides:
+    nvapi: disabled
+    nvapi64: disabled
+  version: lutris-5.5-2-x86_64
+  vkd3d: true
