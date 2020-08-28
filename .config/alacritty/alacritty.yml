@@ -142,67 +142,67 @@ font:
 # If `true`, bold text is drawn using the bright color variants.
 #draw_bold_text_with_bright_colors: false
 
-# # Colors Dark
-# colors:
-#   # Default colors
-#   primary:
-#     background: '#282c34'
-#     foreground: '#abb2bf'
-
-#   # Normal colors
-#   normal:
-#     # NOTE: Use '#131613' for the `black` color if you'd like to see
-#     # black text on the background.
-#     black:   '#282c34'
-#     red:     '#e06c75'
-#     green:   '#98c379'
-#     yellow:  '#d19a66'
-#     blue:    '#61afef'
-#     magenta: '#c678dd'
-#     cyan:    '#56b6c2'
-#     white:   '#abb2bf'
-
-#   # Bright colors
-#   bright:
-#     black:   '#5c6370'
-#     red:     '#e06c75'
-#     green:   '#98c379'
-#     yellow:  '#d19a66'
-#     blue:    '#61afef'
-#     magenta: '#c678dd'
-#     cyan:    '#56b6c2'
-#     white:   '#ffffff'
-
-# Colors Light
+# Colors Dark
 colors:
   # Default colors
   primary:
-    background: '#F9F9F9'
-    foreground: '#383A42'
+    background: '#282c34'
+    foreground: '#abb2bf'
 
   # Normal colors
   normal:
     # NOTE: Use '#131613' for the `black` color if you'd like to see
     # black text on the background.
-    black:   '#000000'
-    red:     '#E45649'
-    green:   '#50A14F'
-    yellow:  '#FFC100'
-    blue:    '#4078F2'
-    magenta: '#A626A4'
-    cyan:    '#0184BC'
-    white:   '#A0A1A7'
+    black:   '#282c34'
+    red:     '#e06c75'
+    green:   '#98c379'
+    yellow:  '#d19a66'
+    blue:    '#61afef'
+    magenta: '#c678dd'
+    cyan:    '#56b6c2'
+    white:   '#abb2bf'
 
   # Bright colors
   bright:
-    black:   '#383A42'
-    red:     '#E45649'
-    green:   '#50A14F'
-    yellow:  '#FFC100'
-    blue:    '#4078F2'
-    magenta: '#A626A4'
-    cyan:    '#0184BC'
+    black:   '#5c6370'
+    red:     '#e06c75'
+    green:   '#98c379'
+    yellow:  '#d19a66'
+    blue:    '#61afef'
+    magenta: '#c678dd'
+    cyan:    '#56b6c2'
     white:   '#ffffff'
+
+# Colors Light
+# colors:
+#   # Default colors
+#   primary:
+#     background: '#F9F9F9'
+#     foreground: '#383A42'
+
+#   # Normal colors
+#   normal:
+#     # NOTE: Use '#131613' for the `black` color if you'd like to see
+#     # black text on the background.
+#     black:   '#000000'
+#     red:     '#E45649'
+#     green:   '#50A14F'
+#     yellow:  '#FFC100'
+#     blue:    '#4078F2'
+#     magenta: '#A626A4'
+#     cyan:    '#0184BC'
+#     white:   '#A0A1A7'
+
+#   # Bright colors
+#   bright:
+#     black:   '#383A42'
+#     red:     '#E45649'
+#     green:   '#50A14F'
+#     yellow:  '#FFC100'
+#     blue:    '#4078F2'
+#     magenta: '#A626A4'
+#     cyan:    '#0184BC'
+#     white:   '#ffffff'
 
 # Visual Bell
 #

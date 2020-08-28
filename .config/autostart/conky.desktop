@@ -1,8 +1,8 @@
 [Desktop Entry]
 Type=Application
-Name=Conky
-Exec=/home/toxblh/.config/conky/startup.sh
-Terminal=false
+Name=conky
+Exec=conky --daemonize --pause=1
 StartupNotify=false
-Hidden=true
-
+Terminal=false
+Icon=conky-logomark-violet
+Categories=System;Monitor;
