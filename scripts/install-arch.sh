@@ -207,7 +207,6 @@ cd -
 rm -rf /tmp/yay
 YAY
 )
-arch-chroot "$MOUNT" bash -c "rm /etc/sudoers.d/$USER"
 
 arch-chroot "$MOUNT" bash -c "chmod 666 /etc/sudoers"
 arch-chroot "$MOUNT" bash -c "sed -i '/^ %wheel ALL=(ALL) NOPASSWD: ALL/s//#&/' /etc/sudoers"
