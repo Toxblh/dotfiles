@@ -159,53 +159,56 @@ HOSTNAME='toxblh-arch'
 # arch-chroot "$MOUNT" bash -c "echo 'en_US.UTF-8 UTF-8' > /etc/locale.gen"
 # arch-chroot "$MOUNT" bash -c "locale-gen"
 
-echo "[3]: Hostname.."
+# echo "[3]: Hostname.."
 
-arch-chroot "$MOUNT" bash -c "echo \"$HOSTNAME\" > /etc/hostname"
+# arch-chroot "$MOUNT" bash -c "echo \"$HOSTNAME\" > /etc/hostname"
 
-arch-chroot "$MOUNT" bash -c "cat > /etc/hosts << EOF
-127.0.0.1 localhost
-::1 localhost
-127.0.1.1 $HOSTNAME.localdomain $HOSTNAME
-EOF"
+# arch-chroot "$MOUNT" bash -c "cat > /etc/hosts << EOF
+# 127.0.0.1 localhost
+# ::1 localhost
+# 127.0.1.1 $HOSTNAME.localdomain $HOSTNAME
+# EOF"
 
-echo "[3]: Nameserver.."
+# echo "[3]: Nameserver.."
 
-arch-chroot "$MOUNT" bash -c "cat > /etc/resolv.conf << EOF
-nameserver 9.9.9.9
-nameserver 1.1.1.1
-nameserver 8.8.8.8
-EOF"
+# arch-chroot "$MOUNT" bash -c "cat > /etc/resolv.conf << EOF
+# nameserver 9.9.9.9
+# nameserver 1.1.1.1
+# nameserver 8.8.8.8
+# EOF"
 
-echo "[3]: Create user.."
-arch-chroot "$MOUNT" bash -c "useradd -m -g users -G wheel -s /bin/zsh $USER"
+# echo "[3]: Create user.."
+# arch-chroot "$MOUNT" bash -c "useradd -m -g users -G wheel -s /bin/zsh $USER"
 
-echo "[3]: Set user password.."
-arch-chroot "$MOUNT" bash -c "echo \"$USER:$PASS\" | chpasswd"
-arch-chroot "$MOUNT" bash -c "passwd -l root"
+# echo "[3]: Set user password.."
+# arch-chroot "$MOUNT" bash -c "echo \"$USER:$PASS\" | chpasswd"
+# arch-chroot "$MOUNT" bash -c "passwd -l root"
 
 
-echo "[3]: Add to sudoers.."
-arch-chroot "$MOUNT" bash -c "chmod 666 /etc/sudoers"
-arch-chroot "$MOUNT" bash -c "echo '%wheel ALL=(ALL) ALL' > /etc/sudoers"
-arch-chroot "$MOUNT" bash -c "chmod 440 /etc/sudoers"
+# echo "[3]: Add to sudoers.."
+# arch-chroot "$MOUNT" bash -c "chmod 666 /etc/sudoers"
+# arch-chroot "$MOUNT" bash -c "echo '%wheel ALL=(ALL) ALL' >> /etc/sudoers"
+# arch-chroot "$MOUNT" bash -c "chmod 440 /etc/sudoers"
 
-echo "[3]: Grub install.."
-arch-chroot "$MOUNT" bash -c "grub-install --target=x86_64-efi --efi-directory=/boot/efi"
-arch-chroot "$MOUNT" bash -c "grub-mkconfig -o /boot/grub/grub.cfg"
+# echo "[3]: Grub install.."
+# arch-chroot "$MOUNT" bash -c "grub-install --target=x86_64-efi --efi-directory=/boot/efi"
+# arch-chroot "$MOUNT" bash -c "grub-mkconfig -o /boot/grub/grub.cfg"
 
-echo "[3]: Systemd.."
-arch-chroot "$MOUNT" bash -c "systemctl enable fstrim.timer"
-arch-chroot "$MOUNT" bash -c "systemctl enable gdm"
-arch-chroot "$MOUNT" bash -c "systemctl enable dhcpcd"
-arch-chroot "$MOUNT" bash -c "systemctl enable NetworkManager"
+# echo "[3]: Systemd.."
+# arch-chroot "$MOUNT" bash -c "systemctl enable fstrim.timer"
+# arch-chroot "$MOUNT" bash -c "systemctl enable gdm"
+# arch-chroot "$MOUNT" bash -c "systemctl enable dhcpcd"
+# arch-chroot "$MOUNT" bash -c "systemctl enable NetworkManager"
 
 echo "[3]: install yay.."
-arch-chroot "$MOUNT" su -l "$USER" -c "cd /tmp\
-git clone https://aur.archlinux.org/yay.git\
-cd yay\
-makepkg -si --noconfirm\
-cd -\
-rm -rf /tmp/yay"\
+arch-chroot "$MOUNT" su -l "$USER" <<< $(cat << YAY
+cd /tmp
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si --noconfirm
+cd -
+rm -rf /tmp/yay"
+YAY
+)
 
 echo "[3]: Finish"
