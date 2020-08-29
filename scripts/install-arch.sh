@@ -215,7 +215,7 @@ echo "[3]: install dotfiles.."
 arch-chroot "$MOUNT" su -l "$USER" <<< $(cat << DOTFILES
 mkdir git
 git clone https://github.com/Toxblh/dotfiles.git
-cd dotfiles.git
+cd dotfiles
 ./restore.sh
 DOTFILES
 )
