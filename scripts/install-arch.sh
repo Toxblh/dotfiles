@@ -163,26 +163,26 @@ echo "[3]: Hostname.."
 
 arch-chroot "$MOUNT" bash -c "echo \"$HOSTNAME\" > /etc/hostname"
 
-arch-chroot "$MOUNT" bash <<< $(cat << EOF
+arch-chroot "$MOUNT" bash <<< $(cat << CMDS
 cat > /etc/hosts << EOF
 127.0.0.1 localhost
 ::1 localhost
 127.0.1.1 $HOSTNAME.localdomain $HOSTNAME
-\EOF
 EOF
+CMDS
 )
 
 arch-chroot "$MOUNT" bash -c "
 
 echo "[3]: Nameserver.."
 
-arch-chroot "$MOUNT" bash <<< $(cat << EOF
+arch-chroot "$MOUNT" bash <<< $(cat << CMDS
 cat > /etc/resolv.conf << EOF
 nameserver 9.9.9.9
 nameserver 1.1.1.1
 nameserver 8.8.8.8
-\EOF
 EOF
+CMDS
 )
 
 echo "[3]: Create user.."
