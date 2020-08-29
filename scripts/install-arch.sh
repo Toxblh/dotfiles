@@ -172,8 +172,6 @@ EOF
 CMDS
 )
 
-arch-chroot "$MOUNT" bash -c "
-
 echo "[3]: Nameserver.."
 
 arch-chroot "$MOUNT" bash <<< $(cat << CMDS
