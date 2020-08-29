@@ -8,156 +8,156 @@ DEV='/dev/nvme0n1' # /vda
 MOUNT='/mnt'
 HOSTNAME='toxblh-arch'
 
-logo() {
-cat << EOF
- _____         _     _ _       ___           _        _ _
-|_   _|____  _| |__ | | |__   |_ _|_ __  ___| |_ __ _| | | ___ _ __
-  | |/ _ \ \/ / '_ \| | '_ \   | || '_ \/ __| __/ _` | | |/ _ \ '__|
-  | | (_) >  <| |_) | | | | |  | || | | \__ \ || (_| | | |  __/ |
-  |_|\___/_/\_\_.__/|_|_| |_| |___|_| |_|___/\__\__,_|_|_|\___|_|
-EOF
-}
+# logo() {
+# cat << EOF
+#  _____         _     _ _       ___           _        _ _
+# |_   _|____  _| |__ | | |__   |_ _|_ __  ___| |_ __ _| | | ___ _ __
+#   | |/ _ \ \/ / '_ \| | '_ \   | || '_ \/ __| __/ _` | | |/ _ \ '__|
+#   | | (_) >  <| |_) | | | | |  | || | | \__ \ || (_| | | |  __/ |
+#   |_|\___/_/\_\_.__/|_|_| |_| |___|_| |_|___/\__\__,_|_|_|\___|_|
+# EOF
+# }
 
-parted_commands=$(cat << EOF
-mklabel gpt
-mkpart primary fat32 1MiB 300MiB
-set 1 esp on
-mkpart primary btrfs 300MiB 100%
-quit
-EOF
-)
+# parted_commands=$(cat << EOF
+# mklabel gpt
+# mkpart primary fat32 1MiB 300MiB
+# set 1 esp on
+# mkpart primary btrfs 300MiB 100%
+# quit
+# EOF
+# )
 
-################################################################
-#
-# 1: Disk prepare
-#
-################################################################
+# ################################################################
+# #
+# # 1: Disk prepare
+# #
+# ################################################################
 
-echo "[1]: Disk prepare"
+# echo "[1]: Disk prepare"
 
-parted "$DEV" <<< "$parted_commands"
+# parted "$DEV" <<< "$parted_commands"
 
-echo "[1]: Disk parted"
+# echo "[1]: Disk parted"
 
-part_prefix="$DEV"
+# part_prefix="$DEV"
 
-if [[ $part_prefix == *nvme* ]]
-then
-part_prefix="${part_prefix}p"
-fi
+# if [[ $part_prefix == *nvme* ]]
+# then
+# part_prefix="${part_prefix}p"
+# fi
 
-mkfs.fat -F32 -n ESP "${part_prefix}1"
-mkfs.btrfs -L Linux "${part_prefix}2"
+# mkfs.fat -F32 -n ESP "${part_prefix}1"
+# mkfs.btrfs -L Linux "${part_prefix}2"
 
-echo "[1]: Created FS"
+# echo "[1]: Created FS"
 
-mount "${part_prefix}2" "$MOUNT"
-btrfs subvolume create "$MOUNT/@"
-btrfs subvolume create "$MOUNT/@home"
-umount "$MOUNT"
+# mount "${part_prefix}2" "$MOUNT"
+# btrfs subvolume create "$MOUNT/@"
+# btrfs subvolume create "$MOUNT/@home"
+# umount "$MOUNT"
 
-echo "[1]: Created Subvolumes BTRFS"
+# echo "[1]: Created Subvolumes BTRFS"
 
-opts='rw,noatime,compress=lzo,ssd,space_cache'
+# opts='rw,noatime,compress=lzo,ssd,space_cache'
 
-mount -o "$opts,subvol=@" "${part_prefix}2" "$MOUNT"
+# mount -o "$opts,subvol=@" "${part_prefix}2" "$MOUNT"
 
-mkdir -p "$MOUNT"/{boot/efi,home}
-mount "${part_prefix}1" "$MOUNT/boot/efi"
+# mkdir -p "$MOUNT"/{boot/efi,home}
+# mount "${part_prefix}1" "$MOUNT/boot/efi"
 
-mount -o "$opts,subvol=@home" "${part_prefix}2" "$MOUNT/home"
+# mount -o "$opts,subvol=@home" "${part_prefix}2" "$MOUNT/home"
 
-echo "[1]: Disk complite and mounted "
-
-
-################################################################
-#
-# 2: Install system
-#
-################################################################
+# echo "[1]: Disk complite and mounted "
 
 
-packages=(
-    # system
-    base
-    base-devel
-    linux
-    linux-firmware
-    linux-headers
-
-    # main parts
-    grub
-    efibootmgr
-    sudo
-    btrfs-progs
-    xorg
-    gnome
-
-    # apps
-    docker-compose
-    fd
-    gimp
-    git
-    gparted
-    htop
-    jq
-    man-db
-    man-pages
-    mpv
-    nano
-    neofetch
-    ntfs-3g
-    openssh
-    papirus-icon-theme
-    qt5ct
-    reflector
-    rsync
-    telegram-desktop
-    terminus-font
-    ttf-opensans
-    vim
-    wget
-    whois
-    zsh
-    dhcpcd
-)
+# ################################################################
+# #
+# # 2: Install system
+# #
+# ################################################################
 
 
-echo "[2]: Install system packages"
+# packages=(
+#     # system
+#     base
+#     base-devel
+#     linux
+#     linux-firmware
+#     linux-headers
 
-set +e
-pacstrap "$MOUNT" "${packages[@]}"
-set -e
+#     # main parts
+#     grub
+#     efibootmgr
+#     sudo
+#     btrfs-progs
+#     xorg
+#     gnome
+
+#     # apps
+#     docker-compose
+#     fd
+#     gimp
+#     git
+#     gparted
+#     htop
+#     jq
+#     man-db
+#     man-pages
+#     mpv
+#     nano
+#     neofetch
+#     ntfs-3g
+#     openssh
+#     papirus-icon-theme
+#     qt5ct
+#     reflector
+#     rsync
+#     telegram-desktop
+#     terminus-font
+#     ttf-opensans
+#     vim
+#     wget
+#     whois
+#     zsh
+#     dhcpcd
+# )
 
 
-echo "[2]: Installed system packages"
+# echo "[2]: Install system packages"
 
-################################################################
-#
-# 3: Configure system
-#
-################################################################
+# set +e
+# pacstrap "$MOUNT" "${packages[@]}"
+# set -e
 
 
-echo "[3]: genfstab..."
-genfstab -U "$MOUNT" >> "$MOUNT/etc/fstab"
+# echo "[2]: Installed system packages"
 
-echo "[3]: arch-chroot start"
+# ################################################################
+# #
+# # 3: Configure system
+# #
+# ################################################################
 
-echo "[3]: Reflector.."
-arch-chroot "$MOUNT" bash -c "reflector -p https -l 30 -n 20 --sort rate --save /etc/pacman.d/mirrorlist"
 
-echo "[3]: Time.."
-arch-chroot "$MOUNT" bash -c "ln -sf /usr/share/zoneinfo/Europe/London /etc/localtime"
+# echo "[3]: genfstab..."
+# genfstab -U "$MOUNT" >> "$MOUNT/etc/fstab"
 
-arch-chroot "$MOUNT" bash -c "ln -sf /usr/share/zoneinfo/Europe/London /etc/localtime"
-arch-chroot "$MOUNT" bash -c "timedatectl set-ntp on"
-arch-chroot "$MOUNT" bash -c "hwclock --systohc"
+# echo "[3]: arch-chroot start"
 
-echo "[3]: Locale.."
+# echo "[3]: Reflector.."
+# arch-chroot "$MOUNT" bash -c "reflector -p https -l 30 -n 20 --sort rate --save /etc/pacman.d/mirrorlist"
 
-arch-chroot "$MOUNT" bash -c "echo 'en_US.UTF-8 UTF-8' > /etc/locale.gen"
-arch-chroot "$MOUNT" bash -c "locale-gen"
+# echo "[3]: Time.."
+# arch-chroot "$MOUNT" bash -c "ln -sf /usr/share/zoneinfo/Europe/London /etc/localtime"
+
+# arch-chroot "$MOUNT" bash -c "ln -sf /usr/share/zoneinfo/Europe/London /etc/localtime"
+# arch-chroot "$MOUNT" bash -c "timedatectl set-ntp on"
+# arch-chroot "$MOUNT" bash -c "hwclock --systohc"
+
+# echo "[3]: Locale.."
+
+# arch-chroot "$MOUNT" bash -c "echo 'en_US.UTF-8 UTF-8' > /etc/locale.gen"
+# arch-chroot "$MOUNT" bash -c "locale-gen"
 
 echo "[3]: Hostname.."
 
@@ -166,7 +166,8 @@ cat > /etc/hosts << EOF\
 127.0.0.1 localhost\
 ::1 localhost\
 127.0.1.1 $HOSTNAME.localdomain $HOSTNAME\
-EOF"
+EOF\
+"
 
 echo "[3]: Nameserver.."
 
@@ -174,7 +175,8 @@ arch-chroot "$MOUNT" bash -c "cat > /etc/resolv.conf << EOF \
 nameserver 9.9.9.9\
 nameserver 1.1.1.1\
 nameserver 8.8.8.8\
-EOF"
+EOF\
+"
 
 
 echo "[3]: Create user.."
