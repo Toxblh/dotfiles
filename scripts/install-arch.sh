@@ -171,7 +171,7 @@ EOF"
 
 echo "[3]: Nameserver.."
 
-arch-chroot "$MOUNT" bash-c "cat > /etc/resolv.conf << EOF
+arch-chroot "$MOUNT" bash -c "cat > /etc/resolv.conf << EOF
 nameserver 9.9.9.9
 nameserver 1.1.1.1
 nameserver 8.8.8.8
