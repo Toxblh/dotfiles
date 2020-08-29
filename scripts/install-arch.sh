@@ -161,8 +161,9 @@ HOSTNAME='toxblh-arch'
 
 echo "[3]: Hostname.."
 
-arch-chroot "$MOUNT" bash -c "echo \"$HOSTNAME\" > /etc/hostname \
-cat > /etc/hosts << EOF\
+arch-chroot "$MOUNT" bash -c "echo \"$HOSTNAME\" > /etc/hostname"
+
+arch-chroot "$mount" bash <<< "cat > /etc/hosts << EOF\
 127.0.0.1 localhost\
 ::1 localhost\
 127.0.1.1 $HOSTNAME.localdomain $HOSTNAME\
@@ -171,7 +172,7 @@ EOF\
 
 echo "[3]: Nameserver.."
 
-arch-chroot "$MOUNT" bash -c "cat > /etc/resolv.conf << EOF \
+arch-chroot "$mount" bash <<< "cat > /etc/resolv.conf << EOF \
 nameserver 9.9.9.9\
 nameserver 1.1.1.1\
 nameserver 8.8.8.8\
