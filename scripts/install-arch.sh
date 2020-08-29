@@ -181,10 +181,9 @@ echo "[3]: Set user password.."
 arch-chroot "$MOUNT" bash -c "echo \"$USER:$PASS\" | chpasswd"
 arch-chroot "$MOUNT" bash -c "passwd -l root"
 
-
 echo "[3]: Add to sudoers.."
 arch-chroot "$MOUNT" bash -c "chmod 666 /etc/sudoers"
-arch-chroot "$MOUNT" bash -c "echo '%wheel ALL=(ALL) ALL' >> /etc/sudoers"
+arch-chroot "$MOUNT" bash -c "sed -i '/^# %wheel ALL=(ALL) NOPASSWD: ALL/s/#//' /etc/sudoers"
 arch-chroot "$MOUNT" bash -c "chmod 440 /etc/sudoers"
 
 echo "[3]: Grub install.."
@@ -199,7 +198,6 @@ arch-chroot "$MOUNT" bash -c "systemctl enable NetworkManager"
 
 echo "[3]: install yay.."
 
-arch-chroot "$MOUNT" bash -c "echo '$USER ALL=(ALL:ALL) NOPASSWD: ALL' > /etc/sudoers.d/$USER"
 arch-chroot "$MOUNT" su -l "$USER" <<< $(cat << YAY
 cd /tmp
 git clone https://aur.archlinux.org/yay.git
@@ -210,6 +208,11 @@ rm -rf /tmp/yay
 YAY
 )
 arch-chroot "$MOUNT" bash -c "rm /etc/sudoers.d/$USER"
+
+arch-chroot "$MOUNT" bash -c "chmod 666 /etc/sudoers"
+arch-chroot "$MOUNT" bash -c "sed -i '/^ %wheel ALL=(ALL) NOPASSWD: ALL/s//#&/' /etc/sudoers"
+arch-chroot "$MOUNT" bash -c "sed -i '/^# %wheel ALL=(ALL) ALL/s/#//' /etc/sudoers"
+arch-chroot "$MOUNT" bash -c "chmod 440 /etc/sudoers"
 
 echo "[3]: install dotfiles.."
 arch-chroot "$MOUNT" su -l "$USER" <<< $(cat << DOTFILES
