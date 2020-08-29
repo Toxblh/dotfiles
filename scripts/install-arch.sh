@@ -201,6 +201,8 @@ HOSTNAME='toxblh-arch'
 # arch-chroot "$MOUNT" bash -c "systemctl enable NetworkManager"
 
 echo "[3]: install yay.."
+
+arch-chroot "$MOUNT" bash -c "echo '$USER ALL=(ALL:ALL) NOPASSWD: ALL' > /etc/sudoers.d/$USER"
 arch-chroot "$MOUNT" su -l "$USER" <<< $(cat << YAY
 cd /tmp
 git clone https://aur.archlinux.org/yay.git
@@ -210,5 +212,6 @@ cd -
 rm -rf /tmp/yay"
 YAY
 )
+arch-chroot "$MOUNT" bash -c "rm /etc/sudoers.d/$USER"
 
 echo "[3]: Finish"
