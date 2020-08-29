@@ -209,7 +209,7 @@ git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si --noconfirm
 cd -
-rm -rf /tmp/yay"
+rm -rf /tmp/yay
 YAY
 )
 arch-chroot "$MOUNT" bash -c "rm /etc/sudoers.d/$USER"
