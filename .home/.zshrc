@@ -47,6 +47,7 @@ alias ktx=kubectx
 alias disablesleep="sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target"
 alias enablesleep="sudo systemctl unmask sleep.target suspend.target hibernate.target hybrid-sleep.target"
 alias ls="ls --color"
+alias l="lsd --date '+%d.%m.%Y %H:%M' -lah"
 
 neofetch
 
