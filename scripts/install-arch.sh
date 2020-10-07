@@ -1,6 +1,15 @@
 #!/usr/bin/env bash
 set -e
 
+#####
+#
+# How to use
+#  curl -L -o install.sh https://bit.ly/2YLvWO1
+#  nano install.sh # Change the user, password and device to you
+#  ./install.sh
+#
+#####
+
 USER='toxblh'
 PASS='123'
 DEV='/dev/nvme0n1' # /vda
