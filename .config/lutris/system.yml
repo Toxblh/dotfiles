@@ -2,3 +2,4 @@ system:
   env:
     LD_PRELOAD: /usr/lib/libgamemodeauto.so
     MANGOHUD: '1'
+  game_path: /mnt/games/Games

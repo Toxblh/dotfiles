@@ -1,8 +1,8 @@
 game:
   arch: win64
   args: --exec="launch Pro"
-  exe: drive_c/Program Files (x86)/Battle.net/Battle.net.exe
-  prefix: /home/toxblh/Games/overwatch
+  exe: /mnt/games/Games/overwatch/drive_c/Program Files (x86)/Battle.net/Battle.net.exe
+  prefix: /mnt/games/Games/overwatch
 system:
   env:
     DXVK_CONFIG_FILE: /home/toxblh/Games/overwatch/dxvk.conf

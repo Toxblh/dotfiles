@@ -1,8 +1,8 @@
 game:
   arch: win64
   args: -opengl -SkipBuildPatchPrereq
-  exe: drive_c/Program Files (x86)/Epic Games/Launcher/Portal/Binaries/Win32/EpicGamesLauncher.exe
-  prefix: /home/toxblh/Games/epic-games-store
+  exe: /mnt/games/Games/epic-games-store/drive_c/Program Files (x86)/Epic Games/Launcher/Portal/Binaries/Win32/EpicGamesLauncher.exe
+  prefix: /mnt/games/Games/epic-games-store
 system:
   env:
     DXVK_HUD: compiler

@@ -1,0 +1,20 @@
+game:
+  arch: win64
+  exe: drive_c/Program Files (x86)/Battle.net/Battle.net.exe
+  prefix: /mnt/games/Games/world-of-warcraft
+system:
+  env:
+    DXVK_HUD: compiler
+    DXVK_STATE_CACHE_PATH: /mnt/games/Games/world-of-warcraft
+    STAGING_SHARED_MEMORY: '1'
+    __GL_SHADER_DISK_CACHE: '1'
+    __GL_SHADER_DISK_CACHE_PATH: /mnt/games/Games/world-of-warcraft
+  exclude_processes: Agent.exe "Battle.net Helper.exe"
+wine:
+  dxvk: true
+  esync: true
+  overrides:
+    nvapi: disabled
+    nvapi64: disabled
+  version: lutris-5.7-10-x86_64
+  vkd3d: true
