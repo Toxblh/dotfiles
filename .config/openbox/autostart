@@ -1,7 +1,0 @@
-nitrogen --restore
-
-exec compton -b &
-
-exec dunst &
-
-tint2 &

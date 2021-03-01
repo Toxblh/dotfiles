@@ -50,6 +50,7 @@ alias disablesleep="sudo systemctl mask sleep.target suspend.target hibernate.ta
 alias enablesleep="sudo systemctl unmask sleep.target suspend.target hibernate.target hybrid-sleep.target"
 alias ls="ls --color"
 alias l="lsd --date '+%d.%m.%Y %H:%M' -lah"
+alias enhance='function ne() { docker run --rm -v "$(pwd)/`dirname ${@:$#}`":/ne/input -it alexjc/neural-enhance ${@:1:$#-1} "input/`basename ${@:$#}`"; }; ne'
 alias logout="loginctl terminate-user toxblh"
 alias vnc="x0vncserver -display :0 -PasswordFile ~/.vnc/passwd"
 alias vnc-fire="fire-res && x0vncserver -display :0 -PasswordFile ~/.vnc/passwd"
