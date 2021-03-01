@@ -69,3 +69,13 @@
   required = true
 [commit]
 	gpgsign = true
+[pull]
+	ff = only
+[sendemail]
+  confirm = auto
+	smtpEncryption = tls
+	smtpServer = smtp.gmail.com
+	smtpUser = toxblh@gmail.com
+	smtpServerPort = 587
+[include]
+  path = config.local # (relative or absolute path to the other config file)

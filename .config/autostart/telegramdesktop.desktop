@@ -1,13 +1,14 @@
 [Desktop Entry]
-Encoding=UTF-8
 Version=1.0
 Name=Telegram Desktop
 Comment=Official desktop version of Telegram messaging app
-Exec=telegram-desktop -- %u
-StartupWMClass=telegram-desktop
+TryExec=/usr/bin/telegram-desktop
+Exec=/usr/bin/telegram-desktop -workdir /home/toxblh/.local/share/TelegramDesktop/ -autostart
 Icon=telegram
 Terminal=false
+StartupWMClass=TelegramDesktop
 Type=Application
-Categories=Network;
-MimeType=application/x-xdg-protocol-tg;x-scheme-handler/tg;
-X-Desktop-File-Install-Version=0.22
+Categories=Chat;Network;InstantMessaging;Qt;
+MimeType=x-scheme-handler/tg;
+Keywords=tg;chat;im;messaging;messenger;sms;tdesktop;
+X-GNOME-UsesNotifications=true

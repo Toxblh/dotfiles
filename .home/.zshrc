@@ -1,4 +1,6 @@
 export TERM="xterm-256color"
+export KWIN_TRIPLE_BUFFER=1
+export LC_ALL=en_GB.UTF-8
 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(host user dir)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator vcs battery time)
@@ -48,6 +50,14 @@ alias disablesleep="sudo systemctl mask sleep.target suspend.target hibernate.ta
 alias enablesleep="sudo systemctl unmask sleep.target suspend.target hibernate.target hybrid-sleep.target"
 alias ls="ls --color"
 alias l="lsd --date '+%d.%m.%Y %H:%M' -lah"
+alias logout="loginctl terminate-user toxblh"
+alias vnc="x0vncserver -display :0 -PasswordFile ~/.vnc/passwd"
+alias vnc-fire="fire-res && x0vncserver -display :0 -PasswordFile ~/.vnc/passwd"
+alias vnc-mac="mac-res && x0vncserver -display :0 -PasswordFile ~/.vnc/passwd"
+alias native-res="xrandr --output DP-2 --mode 3440x1440 --display :0"
+alias fire-res="xrandr --output DP-2 --mode 1280x800 --display :0"
+alias mac-res="xrandr --output DP-2 --mode 1680x1050 --display :0"
+alias dcam="sudo usbmuxd;iproxy 4747 4747 &;droidcam-cli 127.0.0.1 4747"
 
 neofetch
 
@@ -56,3 +66,5 @@ export PATH=~/.cargo/bin:$PATH
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/toxblh/.sdkman"
 [[ -s "/home/toxblh/.sdkman/bin/sdkman-init.sh" ]] && source "/home/toxblh/.sdkman/bin/sdkman-init.sh"
+
+eval "$(pyenv init -)"

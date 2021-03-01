@@ -1,4 +1,5 @@
 system:
-  env:
-    LD_PRELOAD: /usr/lib/libgamemodeauto.so
-    MANGOHUD: '1'
+  env: {}
+  game_path: /mnt/games/Games
+  gamemode: true
+  terminal_app: /usr/bin/alacritty

@@ -460,8 +460,8 @@ key_bindings:
   - { key: V,        mods: Alt, action: Paste            }
   - { key: C,        mods: Alt, action: Copy             }
   - { key: Key0,     mods: Control,       action: ResetFontSize    }
-  - { key: Add,      mods: Control,       action: IncreaseFontSize }
-  - { key: Subtract, mods: Control,       action: DecreaseFontSize }
+  - { key: Equals,      mods: Control,       action: IncreaseFontSize }
+  - { key: Minus, mods: Control,       action: DecreaseFontSize }
   - { key: H,      mods: Control,         action: Minimize             }
   - { key: Q,      mods: Control,         action: Quit             }
   - { key: N,      mods: Control, action: SpawnNewInstance }
