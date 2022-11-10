@@ -1,5 +1,0 @@
-system:
-  env: {}
-  game_path: /mnt/games/Games
-  gamemode: true
-  terminal_app: /usr/bin/alacritty

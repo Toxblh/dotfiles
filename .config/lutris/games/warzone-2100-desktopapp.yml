@@ -1,7 +1,0 @@
-game:
-  appid: warzone2100
-  args: ''
-  exe: /usr/bin/warzone2100
-linux: {}
-system:
-  disable_runtime: true

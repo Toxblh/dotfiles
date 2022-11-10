@@ -1,3 +1,7 @@
+[user]
+	email = toxblh@gmail.com
+	name = Anton Palgunov
+
 [Alias]
   st = status
   ci = commit -am
@@ -39,7 +43,6 @@
 
 [core]
   excludesfile = ~/.gitignore
-  pager = diff-so-fancy | less --tabs=4 -RFX
 
 [help]
   autocorrect = -1
