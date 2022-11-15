@@ -1,7 +1,7 @@
 RESTART="Done. Please restart your terminal to apply changes and run main.sh again"
 
 # brew
-if [[ ! -f /usr/local/bin/brew ]]; then
+if [[ ! ( -f /opt/homebrew/bin/brew || -f /usr/local/bin/brew ) ]]; then
     echo "Brew not installed. Installing..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
     echo $RESTART
@@ -22,6 +22,7 @@ brew install --cask 1password
 # messangers
 brew install --cask telegram
 brew install --cask discord
+brew install --cask element
 
 # code
 brew install --cask visual-studio-code

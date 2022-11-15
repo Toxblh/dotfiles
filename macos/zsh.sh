@@ -13,13 +13,10 @@ if [[ -f ~/.zshrc ]];then
                 * ) echo "Please answer Y or N.";;
             esac
         done
-        cp ./configs/.zshrc ~/.zshrc
-        echo $RESTART
-        exit 1
     fi
-else
-    echo "Zshrc not installed. Installing..."
-    cp ./configs/.zshrc ~/.zshrc
-    echo $RESTART
-    exit 0
 fi
+
+echo "Zshrc not installed. Installing..."
+cp ./configs/.zshrc ~/.zshrc
+echo $RESTART
+exit 1

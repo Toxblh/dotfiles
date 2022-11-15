@@ -5,13 +5,16 @@ fi
 
 cp ./configs/.gitconfig ~/.gitconfig
 
-./brew/apps.sh
 
+# Zsh
 ./zsh.sh
+
 # check zsh.sh status. 0 - ok, 1 - need restart
 if [[ $? -eq 1 ]]; then
     exit 0
 fi
 
+# Brew
+./brew/apps.sh 
 ./brew/rust.sh
 ./brew/nvm.sh
