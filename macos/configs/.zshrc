@@ -44,6 +44,10 @@ NVM="/usr/local/opt/nvm/nvm.sh"
 if [[ -f "$NVM" ]]; then
     source $NVM
 fi
+NVM_ALT="/opt/homebrew/opt/nvm/nvm.sh"
+if [[ -f "$NVM_ALT" ]]; then
+    source $NVM_ALT
+fi
 
 # rust
 RUST="~/.cargo/env"
