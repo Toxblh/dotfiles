@@ -10,48 +10,54 @@ fi
 
 echo "Brew installing apps..."
 
-# fonts
+# taps
 brew tap homebrew/cask-fonts
-brew install --cask font-fira-code
-brew install --cask font-fira-code-nerd-font
 
-# pass
-brew install --cask bitwarden
-brew install --cask 1password
+####
+# Install Casks
+####
 
-# messangers
-brew install --cask telegram
-brew install --cask discord
-brew install --cask element
+# fonts
+brew install --cask \
+    font-fira-code \
+    font-fira-code-nerd-font \
+`# pass` \
+    bitwarden \
+    1password \
+`# messangers` \
+    telegram \
+    discord \
+    element \
+`# code` \
+    visual-studio-code \
+    db-browser-for-sqlite \
+`# others` \
+    monitorcontrol \
+    simplenote \
+    todoist \
+    coconutbattery \
+    firefox \
+    thunderbird \
+    spotify \
+    obsidian \
+    vlc
 
-# code
-brew install --cask visual-studio-code
-brew install --cask db-browser-for-sqlite
-
+####
 # cli tools
-brew install lsd
-brew install tldr
-brew install git
-brew install httpie
-brew install python3
-brew install binwalk
-brew install jq
+####
+brew install \
+    lsd \
+    tldr \
+    git \
+    httpie \
+    python3 \
+    binwalk \
+    jq \
+`## node` \
+    nvm \
+`## rust` \
+    rustup \
 
-## node
-brew install nvm
 
-## rust
-brew install rustup
-
-# others
-brew install --cask monitorcontrol
-brew install --cask simplenote
-brew install --cask todoist
-brew install --cask coconutbattery
-brew install --cask firefox
-brew install --cask thunderbird
-brew install --cask spotify
-brew install --cask obsidian
-brew install --cask vlc
 
 echo "Brew installed!"
