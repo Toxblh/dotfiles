@@ -2,6 +2,9 @@
 	email = toxblh@gmail.com
 	name = Anton Palgunov
 
+[includeIf "gitdir:~/git/"]
+  path = ~/.gitconfig-work
+
 [Alias]
   st = status
   ci = commit -am
