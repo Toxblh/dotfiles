@@ -41,7 +41,8 @@ brew install --cask \
     spotify \
     obsidian \
     vlc \
-    hiddenbar
+    hiddenbar \
+    microsoft-remote-desktop
 
 ####
 # cli tools
