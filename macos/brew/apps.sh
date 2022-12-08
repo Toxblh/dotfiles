@@ -40,7 +40,8 @@ brew install --cask \
     thunderbird \
     spotify \
     obsidian \
-    vlc
+    vlc \
+    hiddenbar
 
 ####
 # cli tools
