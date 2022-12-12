@@ -55,6 +55,7 @@ brew install \
     python3 \
     binwalk \
     jq \
+    stats \
 `## node` \
     nvm \
 `## rust` \
