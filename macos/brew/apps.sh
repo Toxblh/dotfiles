@@ -42,7 +42,8 @@ brew install --cask \
     obsidian \
     vlc \
     hiddenbar \
-    microsoft-remote-desktop
+    microsoft-remote-desktop \
+    krita
 
 ####
 # cli tools
