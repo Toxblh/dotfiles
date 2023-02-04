@@ -9,7 +9,7 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     # Linux platform
     echo "Linux"
     cd ./linux
-    ./restore.sh
+    ./main.sh
 elif [ "$(expr substr $(uname -s) 1 5)" == "MINGW" ]; then
     # Windows platform
     echo "Windows"

@@ -5,7 +5,6 @@ fi
 
 cp ./configs/.gitconfig ~/.gitconfig
 
-
 # Zsh
 ./zsh.sh
 

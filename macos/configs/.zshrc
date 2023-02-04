@@ -63,6 +63,7 @@ if [ -f '/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/complet
 if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
 if [ /usr/local/bin/helm ]; then source <(helm completion zsh); fi
 
+# sdkman
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 

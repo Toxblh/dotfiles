@@ -1,5 +1,5 @@
+# ToxblhZshRc
 export TERM="xterm-256color"
-export KWIN_TRIPLE_BUFFER=1
 export LC_ALL=en_GB.UTF-8
 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(host user dir)
@@ -8,7 +8,6 @@ POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_KUBECONTEXT_SHOW_ON_COMMAND='kubectl|helm|kubens|kubectx|oc|istioctl|kogito'
 
 # ZPlug
-
 if [[ ! -d ~/.zplug ]];then
     git clone https://github.com/b4b4r07/zplug ~/.zplug
 fi
@@ -21,7 +20,6 @@ zplug romkatv/powerlevel10k, as:theme
 zplug "robbyrussell/oh-my-zsh", as:plugin, use:"lib/*.zsh"
 
 # Plugins
-zplug "plugins/archlinux",         from:oh-my-zsh
 zplug "plugins/colored-man-pages", from:oh-my-zsh
 zplug "plugins/colorize",          from:oh-my-zsh
 zplug "lib/completion",            from:oh-my-zsh
@@ -33,16 +31,26 @@ zplug "plugins/git",               from:oh-my-zsh
 zplug "plugins/history",           from:oh-my-zsh
 
 zplug "zsh-users/zsh-autosuggestions"
-# zplug "zsh-users/zsh-syntax-highlighting"
-zplug "zdharma/fast-syntax-highlighting" # Работает намного быстрее предыдущего плагина и подсвечивает лучше
+zplug "zdharma/fast-syntax-highlighting"
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-history-substring-search"
-zplug "MichaelAquilina/zsh-you-should-use" # Сообщает о том, что для команды существует алиас
+# zplug "MichaelAquilina/zsh-you-should-use" # Сообщает о том, что для команды существует алиас
 
 zplug check || zplug install
 zplug load
 
-source /usr/share/nvm/init-nvm.sh
+# nvm
+NVM=/usr/share/nvm/init-nvm.sh
+if [[ -f "$NVM" ]]; then
+    source $NVM
+fi
+
+# rust
+export PATH=~/.cargo/bin:$PATH
+
+# sdkman
+export SDKMAN_DIR="/home/toxblh/.sdkman"
+[[ -s "/home/toxblh/.sdkman/bin/sdkman-init.sh" ]] && source "/home/toxblh/.sdkman/bin/sdkman-init.sh"
 
 alias k=kubectl
 alias ktx=kubectx
@@ -61,11 +69,3 @@ alias mac-res="xrandr --output DP-2 --mode 1680x1050 --display :0"
 alias dcam="sudo usbmuxd;iproxy 4747 4747 &;droidcam-cli 127.0.0.1 4747"
 
 neofetch
-
-export PATH=~/.cargo/bin:$PATH
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/toxblh/.sdkman"
-[[ -s "/home/toxblh/.sdkman/bin/sdkman-init.sh" ]] && source "/home/toxblh/.sdkman/bin/sdkman-init.sh"
-
-eval "$(pyenv init -)"
