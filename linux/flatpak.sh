@@ -25,4 +25,13 @@ flatpak install -y \
     com.spotify.Client \
     com.github.tchx84.Flatseal \
     com.bitwarden.desktop \
-    org.videolan.VLC
+    org.videolan.VLC \
+    com.github.johnfactotum.Foliate \
+    com.github.debauchee.barrier \
+    com.obsproject.Studio \
+    com.mattjakeman.ExtensionManager \
+    com.leinardi.gwe \
+    io.github.kotatogram \
+    org.ghidra_sre.Ghidra \
+    org.pipewire.Helvum \
+    com.belmoussaoui.Decoder \
