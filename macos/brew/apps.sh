@@ -43,7 +43,8 @@ brew install --cask \
     vlc \
     hiddenbar \
     microsoft-remote-desktop \
-    krita
+    krita \
+    alacritty
 
 ####
 # cli tools
